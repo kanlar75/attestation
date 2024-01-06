@@ -41,7 +41,7 @@ class Contact(models.Model):
 
     company = models.ForeignKey(Company, on_delete=models.CASCADE,
                                 verbose_name="Компания",
-                                related_name="контакты")
+                                related_name="contacts")
 
     def __str__(self):
         return self.email
@@ -59,7 +59,7 @@ class Product(models.Model):
 
     company = models.ForeignKey(Company, on_delete=models.CASCADE,
                                 verbose_name="Компания",
-                                related_name="продукт")
+                                related_name="products")
 
     def __str__(self):
         return f'{self.name} ({self.model})'
