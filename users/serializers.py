@@ -1,26 +1,20 @@
-from rest_framework.serializers import ModelSerializer
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from djoser.serializers import \
+    UserCreateSerializer as BaseUserRegistrationSerializer
+from rest_framework import serializers
+from django.contrib.auth import get_user_model
 
-from users.models import User
-
-
-class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-    @classmethod
-    def get_token(cls, user):
-        token = super().get_token(user)
-        token['email'] = user.email
-        return token
+User = get_user_model()
 
 
-class UserSerializer(ModelSerializer):
-    def create(self, validated_data):
-        password = validated_data.pop('password')
-        instance = super().create(validated_data)
-        instance.set_password(password)
-
-        instance.save()
-        return instance
-
+class UserRegistrationSerializer(BaseUserRegistrationSerializer):
     class Meta:
         model = User
-        fields = '__all__'
+        fields = ["email", "password", "first_name", "last_name", "phone"]
+
+
+class CurrentUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["first_name", "last_name", "phone", "id", "email", "image"]
+
+

@@ -35,12 +35,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'rest_framework',
+    "rest_framework",
+    'rest_framework.authtoken',
     'rest_framework_simplejwt',
     'drf_yasg',
     'corsheaders',
 
     'users',
+    'electronics_network',
 ]
 
 MIDDLEWARE = [
@@ -174,6 +176,19 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}
+
+DJOSER = {
+    "LOGIN_FIELD": "email",
+    "PASSWORD_RESET_CONFIRM_URL": "email/reset/confirm/{uid}/{token}",
+    'SEND_ACTIVATION_EMAIL': False,
+
+    "SERIALIZERS": {
+        "user_create": "users.serializers.UserRegistrationSerializer",
+        "user": "users.serializers.CurrentUserSerializer",
+        "current_user": "users.serializers.CurrentUserSerializer",
+        "user_delete": "users.serializers.CurrentUserSerializer",
+    },
 }
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
