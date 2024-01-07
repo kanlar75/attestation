@@ -8,6 +8,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, \
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 
+admin.site.site_header = "Панель администрирования"
 schema_view = get_schema_view(
     openapi.Info(
         title="API Documentation",
@@ -25,6 +26,7 @@ urlpatterns = ([
     path("api/admin/", admin.site.urls),
 
     path("api/", include('users.urls')),
+    path("api/", include('electronics_network.urls')),
 
     path('api/token/', TokenObtainPairView.as_view(),
          name='token_obtain_pair'),

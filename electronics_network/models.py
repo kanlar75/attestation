@@ -10,7 +10,7 @@ class NetworkNode(models.TextChoices):
 
 
 class Company(models.Model):
-    name = models.CharField(max_length=150, verbose_name="Название")
+    name = models.CharField(max_length=150, verbose_name="Компания")
     supplier = models.ForeignKey('self', on_delete=models.SET_NULL,
                                  verbose_name="Поставщик",
                                  related_name='provider',
