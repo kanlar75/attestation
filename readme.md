@@ -67,10 +67,10 @@ git clone git@github.com:kanlar75/attestation.git
 Установите docker и при необходимости docker-compose.
 Пропишите переменные окружения в файл .env, используйте образец из .env.example
 
+Для запуска в docker установите ENV_TYPE='docker'.
+
 Создайте образ командой:
 docker-compose build
-
-Для запуска в docker установите ENV_TYPE='docker'.
 
 Запустите контейнеры командой:
 docker-compose up
@@ -82,6 +82,12 @@ login: admin@test.com password: 111
 Для всех пользователей (user1@test.com, user2@test.com) password: 111.
 
 Тестирование выполнялось в Unitest. Покрытие тестами 90%.
-Для запуска тестов с расчетом покрытия выполните команды:
+
+Для запуска тестов с расчетом покрытия, установите ENV_TYPE='local' в файле .env
+и выполните команды:
 coverage run manage.py test
 coverage report или coverage html
+
+Если у вас возникли вопросы или проблемы при использовании проекта,
+свяжитесь со мной по электронной почте kls75@yandex.ru или оставьте
+комментарий.
