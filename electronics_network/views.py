@@ -4,6 +4,7 @@ from rest_framework.filters import SearchFilter
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from electronics_network.models import Company, Contact, Product
+from electronics_network.paginators import MyPaginator
 from users.permissions import IsActive, IsSuperuser
 from electronics_network.serializers import CompanyDetailSerializer, \
     CompanySerializer, ProductSerializer, ContactSerializer
@@ -15,6 +16,7 @@ class ContactViewSet(ModelViewSet):
     serializer_class = ContactSerializer
     queryset = Contact.objects.all()
     permission_classes = [IsAuthenticated, IsActive | IsSuperuser]
+    pagination_class = MyPaginator
 
 
 class ProductViewSet(ModelViewSet):
@@ -23,6 +25,7 @@ class ProductViewSet(ModelViewSet):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
     permission_classes = [IsAuthenticated, IsActive | IsSuperuser]
+    pagination_class = MyPaginator
 
 
 class CompanyDetailAPIView(generics.RetrieveAPIView):
@@ -49,6 +52,7 @@ class CompanyListAPIView(generics.ListAPIView):
     filter_backends = [SearchFilter]
     search_fields = ['contacts__country']
     permission_classes = [AllowAny]
+    pagination_class = MyPaginator
 
 
 class CompanyCreateAPIView(generics.CreateAPIView):
