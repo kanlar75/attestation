@@ -1,7 +1,5 @@
 from rest_framework.test import APITestCase, APIClient
 from rest_framework import status
-from electronics_network.models import Company
-from users.models import User
 
 
 class CompanyTestCase(APITestCase):
