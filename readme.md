@@ -84,4 +84,4 @@ login: admin@test.com password: 111
 Тестирование выполнялось в Unitest. Покрытие тестами 90%.
 Для запуска тестов с расчетом покрытия выполните команды:
 coverage run manage.py test
-coverage report
+coverage report или coverage html
