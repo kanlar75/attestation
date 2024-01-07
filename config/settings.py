@@ -23,7 +23,6 @@ if ENV_TYPE == 'local' or ENV_TYPE == 'docker':
     ALLOWED_HOST = ['localhost', '127.0.0.1']
 elif ENV_TYPE == 'no_local' or ENV_TYPE == 'docker_deploy':
     ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS')]
-ALLOWED_HOST = ['*']
 
 # Application definition
 
