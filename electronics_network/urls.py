@@ -10,8 +10,8 @@ from electronics_network.views import CompanyDetailAPIView, \
 app_name = ElectronicsNetworkConfig.name
 
 router = DefaultRouter()
-router.register(r'contacts', ContactViewSet, basename='contacts')
-router.register(r'products', ProductViewSet, basename='products')
+router.register(r'company/contacts', ContactViewSet, basename='contacts')
+router.register(r'company/products', ProductViewSet, basename='products')
 
 urlpatterns = [
     path("company/<int:pk>/", CompanyDetailAPIView.as_view(),

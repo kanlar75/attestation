@@ -16,12 +16,6 @@ class ContactViewSet(ModelViewSet):
     queryset = Contact.objects.all()
     permission_classes = [IsAuthenticated, IsActive | IsSuperuser]
 
-    def perform_create(self, serializer):
-        serializer.save()
-
-    def perform_update(self, serializer):
-        serializer.save()
-
 
 class ProductViewSet(ModelViewSet):
     """Продукты. """
@@ -29,12 +23,6 @@ class ProductViewSet(ModelViewSet):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
     permission_classes = [IsAuthenticated, IsActive | IsSuperuser]
-
-    def perform_create(self, serializer):
-        serializer.save()
-
-    def perform_update(self, serializer):
-        serializer.save()
 
 
 class CompanyDetailAPIView(generics.RetrieveAPIView):

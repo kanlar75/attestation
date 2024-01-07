@@ -8,7 +8,7 @@ from electronics_network.models import Product
 
 
 @admin.register(Contact)
-class ProductAdmin(admin.ModelAdmin):
+class ContactAdmin(admin.ModelAdmin):
     list_display = ('pk', 'company', 'country', 'city',)
     list_filter = ('country',)
     list_display_links = ('company',)
@@ -16,6 +16,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
+
     list_display = ('pk', 'name', 'model', 'get_company',)
     list_filter = ('company',)
     list_display_links = ('pk', 'name', 'get_company',)
@@ -51,4 +52,4 @@ class CompanyAdmin(admin.ModelAdmin):
     @admin.action(description='Удалить задолженность')
     def clear_the_debt(self, request, queryset):
         queryset.update(debt=0.00)
-        self.message_user(request, f"Задолженность удалена.")
+        self.message_user(request, "Задолженность удалена.")

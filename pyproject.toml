@@ -19,6 +19,8 @@ drf-yasg = "^1.21.7"
 pillow = "^10.1.0"
 djoser = "^2.2.2"
 django-filter = "^23.5"
+flake8 = "^7.0.0"
+coverage = "^7.4.0"
 
 
 [build-system]
